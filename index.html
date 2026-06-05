@@ -58,7 +58,7 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 8px; /* Space between icon and text */
+            gap: 8px;
         }
 
         .logo-icon {
@@ -97,7 +97,7 @@
             color: var(--secondary-color);
         }
 
-        /* Section Styling - applies to everything EXCEPT hero */
+        /* Section Styling */
         section {
             padding: 5rem 5%;
             max-width: 1200px;
@@ -107,8 +107,8 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            max-width: 100%; /* Overrides the section max-width to stretch edge-to-edge */
-            margin-top: 60px; /* Offset for fixed header */
+            max-width: 100%;
+            margin-top: 60px;
             background: linear-gradient(rgba(31, 41, 55, 0.7), rgba(31, 41, 55, 0.7)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             align-items: center;
@@ -200,6 +200,34 @@
             font-size: 0.9rem;
         }
 
+        /* About/Contact Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-block h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
         /* Reviews Section */
         .reviews-grid {
             display: grid;
@@ -273,41 +301,12 @@
             flex-grow: 1;
         }
 
-        /* About/Contact Section */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .info-block h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
         /* Footer */
         footer {
             background-color: var(--secondary-color);
             color: var(--white);
             text-align: center;
             padding: 2rem;
-            margin-top: 2rem;
         }
 
         /* Responsive Design */
@@ -346,6 +345,7 @@
 </head>
 <body>
 
+    <!-- Header & Navigation -->
     <header>
         <nav>
             <a href="#home" class="logo">
@@ -361,14 +361,14 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#menu">Menu</a></li>
-                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#reviews">Reviews</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Fresh Coffee & Great Food</h1>
@@ -377,6 +377,7 @@
         </div>
     </section>
 
+    <!-- Menu Section -->
     <section id="menu">
         <h2 class="section-title">Our <span>Menu</span></h2>
         <div class="menu-grid">
@@ -404,85 +405,7 @@
         </div>
     </section>
 
-    <section id="reviews" style="background-color: var(--white); padding-bottom: 5rem; border-radius: 20px; margin-top: 2rem;">
-        <h2 class="section-title" style="padding-top: 3rem;">Customer <span>Reviews</span></h2>
-        <div class="reviews-grid">
-            
-            <div class="review-card">
-                <div class="reviewer-header">
-                    <div class="avatar green">R</div>
-                    <div class="reviewer-info">
-                        <h4>Ruth</h4>
-                        <span>a year ago</span>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"I ordered a delicious cake and vanilla pastries from Lidiya’s Cafe. Tasted so fresh and the staff are so friendly. I highly recommend visiting if you are ever near Kebena. I will be back on my next visit to Ethiopia."</p>
-            </div>
-
-            <div class="review-card">
-                <div class="reviewer-header">
-                    <div class="avatar blue">D</div>
-                    <div class="reviewer-info">
-                        <h4>Danny Mia</h4>
-                        <span>11 months ago</span>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Test the difference with An excellent service"</p>
-            </div>
-
-            <div class="review-card">
-                <div class="reviewer-header">
-                    <div class="avatar green">H</div>
-                    <div class="reviewer-info">
-                        <h4>Hayat Jemal</h4>
-                        <span>3 years ago</span>
-                    </div>
-                </div>
-                <div class="stars">★★★★☆</div>
-                <p class="review-text">"Their food is so good i loved it so much and you should try their special burger"</p>
-            </div>
-
-            <div class="review-card">
-                <div class="reviewer-header">
-                    <div class="avatar purple">R</div>
-                    <div class="reviewer-info">
-                        <h4>Rezan Hasan</h4>
-                        <span>3 years ago</span>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Great food, good service!"</p>
-            </div>
-
-            <div class="review-card">
-                <div class="reviewer-header">
-                    <div class="avatar orange">S</div>
-                    <div class="reviewer-info">
-                        <h4>S A</h4>
-                        <span>4 years ago</span>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Amazing service. Love it"</p>
-            </div>
-
-             <div class="review-card">
-                <div class="reviewer-header">
-                    <div class="avatar blue">D</div>
-                    <div class="reviewer-info">
-                        <h4>D Raff</h4>
-                        <span>8 months ago</span>
-                    </div>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="review-text">"Food: 5/5 | Service: 5/5"</p>
-            </div>
-
-        </div>
-    </section>
-
+    <!-- Information / Contact Section -->
     <section id="about">
         <h2 class="section-title">Visit <span>Us</span></h2>
         <div class="info-grid">
@@ -516,10 +439,98 @@
         </div>
     </section>
 
+    <!-- Customer Reviews Section (Moved to the bottom) -->
+    <section id="reviews" style="background-color: var(--white); padding-bottom: 5rem; border-radius: 20px; margin-top: 2rem; margin-bottom: 2rem;">
+        <h2 class="section-title" style="padding-top: 3rem;">Customer <span>Reviews</span></h2>
+        <div class="reviews-grid">
+            
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar green">R</div>
+                    <div class="reviewer-info">
+                        <h4>Ruth</h4>
+                        <span>a year ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"I ordered a delicious cake and vanilla pastries from Lidiya’s Cafe. Tasted so fresh and the staff are so friendly. I highly recommend visiting if you are ever near Kebena. I will be back on my next visit to Ethiopia."</p>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar blue">D</div>
+                    <div class="reviewer-info">
+                        <h4>Danny Mia</h4>
+                        <span>11 months ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Test the difference with An excellent service"</p>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar green">H</div>
+                    <div class="reviewer-info">
+                        <h4>Hayat Jemal</h4>
+                        <span>3 years ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★☆</div>
+                <p class="review-text">"Their food is so good i loved it so much and you should try their special burger"</p>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar purple">R</div>
+                    <div class="reviewer-info">
+                        <h4>Rezan Hasan</h4>
+                        <span>3 years ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Great food, good service!"</p>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar orange">S</div>
+                    <div class="reviewer-info">
+                        <h4>S A</h4>
+                        <span>4 years ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Amazing service. Love it"</p>
+            </div>
+
+             <!-- Review 6 -->
+             <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar blue">D</div>
+                    <div class="reviewer-info">
+                        <h4>D Raff</h4>
+                        <span>8 months ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Food: 5/5 | Service: 5/5"</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Lidiya Cafe & Fast Food. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Mobile Menu & Smooth Scrolling -->
     <script>
         // Mobile Menu Toggle
         const mobileBtn = document.querySelector('.mobile-menu-btn');
