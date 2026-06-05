@@ -303,10 +303,28 @@
 
         /* Footer */
         footer {
-            background-color: var(--secondary-color);
+            background-color: #0f172a; /* Slightly darker to match your screenshot */
             color: var(--white);
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 1rem;
+        }
+
+        .footer-credit {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #8e9bb0;
+        }
+
+        .footer-credit span {
+            color: #00a8e8; /* Bright blue from the screenshot */
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-credit span:hover {
+            color: #38bdf8;
+            text-decoration: underline;
         }
 
         /* Responsive Design */
@@ -439,7 +457,7 @@
         </div>
     </section>
 
-    <!-- Customer Reviews Section (Moved to the bottom) -->
+    <!-- Customer Reviews Section -->
     <section id="reviews" style="background-color: var(--white); padding-bottom: 5rem; border-radius: 20px; margin-top: 2rem; margin-bottom: 2rem;">
         <h2 class="section-title" style="padding-top: 3rem;">Customer <span>Reviews</span></h2>
         <div class="reviews-grid">
@@ -528,6 +546,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Lidiya Cafe & Fast Food. All Rights Reserved.</p>
+        <p class="footer-credit">Website designed & developed by <span>SpiderWeb</span></p>
     </footer>
 
     <!-- JavaScript for Mobile Menu & Smooth Scrolling -->
