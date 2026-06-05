@@ -303,7 +303,7 @@
 
         /* Footer */
         footer {
-            background-color: #0f172a; /* Slightly darker to match your screenshot */
+            background-color: #0f172a;
             color: var(--white);
             text-align: center;
             padding: 2.5rem 1rem;
@@ -316,7 +316,7 @@
         }
 
         .footer-credit span {
-            color: #00a8e8; /* Bright blue from the screenshot */
+            color: #00a8e8;
             font-weight: 500;
             cursor: pointer;
             transition: color 0.3s;
@@ -452,7 +452,8 @@
                     <li><strong>Saturday:</strong> 7:00 AM - 8:30 PM</li>
                     <li><strong>Sunday:</strong> 8:00 AM - 8:00 PM</li>
                 </ul>
-                <p style="margin-top: 1rem; color: #10b981; font-weight: 600;">Open Today</p>
+                <!-- Added ID here for JavaScript to target -->
+                <p id="store-status" style="margin-top: 1rem; font-weight: 600;"></p>
             </div>
         </div>
     </section>
@@ -549,9 +550,9 @@
         <p class="footer-credit">Website designed & developed by <span>SpiderWeb</span></p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu & Smooth Scrolling -->
+    <!-- JavaScript for Mobile Menu, Smooth Scrolling & Dynamic Hours -->
     <script>
-        // Mobile Menu Toggle
+        // --- Navigation Logic ---
         const mobileBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
 
@@ -559,23 +560,76 @@
             navLinks.classList.toggle('active');
         });
 
-        // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                navLinks.classList.remove('active'); // Close mobile menu on click
-                
+                navLinks.classList.remove('active'); 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 70, // Offset for fixed header
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
             });
         });
+
+        // --- Store Status Logic ---
+        function updateStoreStatus() {
+            // Hours config using 24-hour float format (e.g., 20.5 = 8:30 PM)
+            // 0: Sunday, 1: Monday, ..., 6: Saturday
+            const hoursConfig = {
+                0: { open: 8, close: 20 },     // Sun: 8:00 AM - 8:00 PM
+                1: { open: 7, close: 20.5 },   // Mon: 7:00 AM - 8:30 PM
+                2: { open: 7, close: 20.5 },   // Tue
+                3: { open: 7, close: 20.5 },   // Wed
+                4: { open: 7, close: 20.5 },   // Thu
+                5: { open: 7, close: 20.5 },   // Fri
+                6: { open: 7, close: 20.5 }    // Sat
+            };
+
+            const now = new Date();
+            const currentDay = now.getDay();
+            const currentHour = now.getHours() + (now.getMinutes() / 60);
+            
+            const todaySchedule = hoursConfig[currentDay];
+            const statusElement = document.getElementById('store-status');
+
+            // Helper to format float hour (7.5) to string ("7:30 AM")
+            function formatTime(timeFloat) {
+                let hour = Math.floor(timeFloat);
+                let minute = Math.round((timeFloat - hour) * 60);
+                let ampm = hour >= 12 ? 'PM' : 'AM';
+                
+                hour = hour % 12;
+                hour = hour ? hour : 12; // 0 becomes 12
+                let minStr = minute < 10 ? '0' + minute : minute;
+                
+                return `${hour}:${minStr} ${ampm}`;
+            }
+
+            if (currentHour >= todaySchedule.open && currentHour < todaySchedule.close) {
+                statusElement.textContent = "Open Now";
+                statusElement.style.color = "#10b981"; // Green
+            } else if (currentHour < todaySchedule.open) {
+                statusElement.textContent = `Opens Today @ ${formatTime(todaySchedule.open)}`;
+                statusElement.style.color = "#d97706"; // Orange
+            } else {
+                // If it's past closing time, check tomorrow's opening time
+                const tomorrowDay = (currentDay + 1) % 7;
+                const tomorrowSchedule = hoursConfig[tomorrowDay];
+                statusElement.textContent = `Opens Tomorrow @ ${formatTime(tomorrowSchedule.open)}`;
+                statusElement.style.color = "#d97706"; // Orange
+            }
+        }
+
+        // Run on page load
+        updateStoreStatus();
+        // Update the status every minute so it's always accurate if left open
+        setInterval(updateStoreStatus, 60000); 
+
     </script>
 </body>
 </html>
