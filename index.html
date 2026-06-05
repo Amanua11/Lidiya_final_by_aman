@@ -49,12 +49,22 @@
             margin: auto;
         }
 
+        /* Logo Styling */
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--secondary-color);
             text-decoration: none;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            stroke: var(--primary-color);
         }
 
         .logo span {
@@ -87,9 +97,18 @@
             color: var(--secondary-color);
         }
 
+        /* Section Styling - applies to everything EXCEPT hero */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
+            max-width: 100%; /* Overrides the section max-width to stretch edge-to-edge */
+            margin-top: 60px; /* Offset for fixed header */
             background: linear-gradient(rgba(31, 41, 55, 0.7), rgba(31, 41, 55, 0.7)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex;
             align-items: center;
@@ -97,7 +116,6 @@
             text-align: center;
             color: var(--white);
             padding: 0 20px;
-            margin-top: 60px; /* Offset for fixed header */
         }
 
         .hero h1 {
@@ -127,13 +145,6 @@
         .btn:hover {
             background-color: #b45309;
             transform: translateY(-2px);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: auto;
         }
 
         .section-title {
@@ -335,10 +346,18 @@
 </head>
 <body>
 
-    <!-- Header & Navigation -->
     <header>
         <nav>
-            <a href="#" class="logo">Lidiya <span>Cafe</span></a>
+            <a href="#home" class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                    <line x1="6" y1="1" x2="6" y2="4"></line>
+                    <line x1="10" y1="1" x2="10" y2="4"></line>
+                    <line x1="14" y1="1" x2="14" y2="4"></line>
+                </svg>
+                Lidiya <span>Cafe</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#menu">Menu</a></li>
@@ -350,7 +369,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Fresh Coffee & Great Food</h1>
@@ -359,7 +377,6 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
     <section id="menu">
         <h2 class="section-title">Our <span>Menu</span></h2>
         <div class="menu-grid">
@@ -387,12 +404,10 @@
         </div>
     </section>
 
-    <!-- Customer Reviews Section -->
     <section id="reviews" style="background-color: var(--white); padding-bottom: 5rem; border-radius: 20px; margin-top: 2rem;">
         <h2 class="section-title" style="padding-top: 3rem;">Customer <span>Reviews</span></h2>
         <div class="reviews-grid">
             
-            <!-- Review 1 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar green">R</div>
@@ -405,7 +420,6 @@
                 <p class="review-text">"I ordered a delicious cake and vanilla pastries from Lidiya’s Cafe. Tasted so fresh and the staff are so friendly. I highly recommend visiting if you are ever near Kebena. I will be back on my next visit to Ethiopia."</p>
             </div>
 
-            <!-- Review 2 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar blue">D</div>
@@ -418,7 +432,6 @@
                 <p class="review-text">"Test the difference with An excellent service"</p>
             </div>
 
-            <!-- Review 3 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar green">H</div>
@@ -431,7 +444,6 @@
                 <p class="review-text">"Their food is so good i loved it so much and you should try their special burger"</p>
             </div>
 
-            <!-- Review 4 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar purple">R</div>
@@ -444,7 +456,6 @@
                 <p class="review-text">"Great food, good service!"</p>
             </div>
 
-            <!-- Review 5 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar orange">S</div>
@@ -457,7 +468,6 @@
                 <p class="review-text">"Amazing service. Love it"</p>
             </div>
 
-             <!-- Review 6 -->
              <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar blue">D</div>
@@ -473,7 +483,6 @@
         </div>
     </section>
 
-    <!-- Information / Contact Section -->
     <section id="about">
         <h2 class="section-title">Visit <span>Us</span></h2>
         <div class="info-grid">
@@ -490,7 +499,7 @@
                     </li>
                     <li>
                         <strong>🍽️ Services:</strong> 
-                        Dine-in · Takeaway
+                        Dine-in · Takeaway · Delivery
                     </li>
                 </ul>
             </div>
@@ -507,12 +516,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Lidiya Cafe & Fast Food. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu & Smooth Scrolling -->
     <script>
         // Mobile Menu Toggle
         const mobileBtn = document.querySelector('.mobile-menu-btn');
