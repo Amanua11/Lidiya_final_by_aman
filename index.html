@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lidiya Cafe & Fast Food - Maps Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #202124;
+            --text-secondary: #70757a;
+            --blue-primary: #1a73e8;
+            --border-color: #e8eaed;
+            --button-blue-bg: #c2e7ff;
+            --button-blue-text: #001d35;
+            --icon-bg: #e8f0fe;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 414px; /* Mobile width simulator */
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Hero Image & Search Bar */
+        .hero-section {
+            position: relative;
+            height: 250px;
+            background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+        }
+
+        .search-bar {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            background: white;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: var(--text-main);
+            margin: 0 8px;
+        }
+
+        .search-bar .material-icons-outlined {
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        /* Header Info */
+        .header-info {
+            padding: 16px 20px 0;
+        }
+
+        .header-info h1 {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .rating-score {
+            color: var(--text-main);
+            font-weight: 500;
+            margin-right: 4px;
+        }
+
+        .stars {
+            color: #fbbc04;
+            display: flex;
+            align-items: center;
+            margin-right: 4px;
+        }
+        .stars .material-icons {
+            font-size: 14px;
+        }
+        .stars .star-gray {
+            color: #dadce0;
+        }
+
+        .category {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 20px;
+        }
+
+        .tab {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--blue-primary);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--blue-primary);
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .action-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--icon-bg);
+            color: var(--blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .action-btn.directions .action-icon-wrapper {
+            background-color: var(--blue-primary);
+            color: white;
+        }
+
+        .action-btn span {
+            font-size: 12px;
+            color: var(--blue-primary);
+            font-weight: 500;
+        }
+
+        /* Service Options */
+        .service-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .service-list {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .service-item .material-icons {
+            color: #1e8e3e; /* Green checkmark */
+            font-size: 18px;
+        }
+
+        /* Info List */
+        .info-list {
+            padding: 8px 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            cursor: pointer;
+        }
+
+        .info-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .info-icon {
+            color: var(--text-secondary);
+            margin-right: 16px;
+            font-size: 20px;
+        }
+
+        .info-text {
+            font-size: 14px;
+            color: var(--text-main);
+            flex-grow: 1;
+        }
+
+        .info-text.green {
+            color: #1e8e3e;
+        }
+
+        .info-text.gray {
+            color: var(--text-secondary);
+        }
+
+        /* Suggest Edit Button */
+        .bottom-action {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .edit-btn {
+            background-color: var(--button-blue-bg);
+            color: var(--button-blue-text);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .edit-btn .material-icons-outlined {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="hero-section">
+        <div class="search-bar">
+            <input type="text" value="Lidiya Cafe & Fast Food" readonly>
+            <span class="material-icons-outlined">search</span>
+            <span class="material-icons-outlined" style="margin-left: 8px;">close</span>
+        </div>
+    </div>
+
+    <div class="header-info">
+        <h1>Lidiya Cafe & Fast Food</h1>
+        <div class="rating-row">
+            <span class="rating-score">4.2</span>
+            <div class="stars">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons star-gray">star_rate</span>
+            </div>
+            <span>(20)</span>
+        </div>
+        <div class="category">Restaurant</div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab(this)">Overview</div>
+        <div class="tab" onclick="switchTab(this)">Reviews</div>
+        <div class="tab" onclick="switchTab(this)">About</div>
+    </div>
+
+    <div class="action-buttons">
+        <button class="action-btn directions">
+            <div class="action-icon-wrapper">
+                <span class="material-icons">directions</span>
+            </div>
+            <span>Directions</span>
+        </button>
+        <button class="action-btn">
+            <div class="action-icon-wrapper">
+                <span class="material-icons-outlined">bookmark_border</span>
+            </div>
+            <span>Save</span>
+        </button>
+        <button class="action-btn">
+            <div class="action-icon-wrapper">
+                <span class="material-icons-outlined">location_on</span>
+            </div>
+            <span>Nearby</span>
+        </button>
+        <button class="action-btn">
+            <div class="action-icon-wrapper">
+                <span class="material-icons-outlined">send_to_mobile</span>
+            </div>
+            <span>Send to phone</span>
+        </button>
+        <button class="action-btn">
+            <div class="action-icon-wrapper">
+                <span class="material-icons-outlined">share</span>
+            </div>
+            <span>Share</span>
+        </button>
+    </div>
+
+    <div class="service-options">
+        <div class="service-list">
+            <div class="service-item">
+                <span class="material-icons">check</span> Dine-in
+            </div>
+            <span style="color: var(--text-secondary)">·</span>
+            <div class="service-item">
+                <span class="material-icons">check</span> Takeaway
+            </div>
+        </div>
+        <span class="material-icons-outlined" style="color: var(--text-secondary);">chevron_right</span>
+    </div>
+
+    <div class="info-list">
+        <div class="info-item">
+            <span class="material-icons-outlined info-icon">location_on</span>
+            <span class="info-text">2QJF+XR2, Queen Elizabeth II St, Addis Ababa</span>
+        </div>
+        <div class="info-item">
+            <span class="material-icons-outlined info-icon">schedule</span>
+            <div class="info-text">
+                <span class="green">Open</span><span class="gray"> · Closes 8:30 PM</span>
+            </div>
+            <span class="material-icons-outlined" style="color: var(--text-secondary); font-size: 18px;">expand_more</span>
+        </div>
+        <div class="info-item">
+            <span class="material-icons-outlined info-icon">call</span>
+            <span class="info-text">091 190 1648</span>
+        </div>
+        <div class="info-item">
+            <span class="material-icons-outlined info-icon">verified_user</span>
+            <span class="info-text">Claim this business</span>
+        </div>
+        <div class="info-item">
+            <span class="material-icons-outlined info-icon">history</span>
+            <span class="info-text">Your Maps history</span>
+        </div>
+        <div class="info-item">
+            <span class="material-icons-outlined info-icon">label</span>
+            <span class="info-text">Add a label</span>
+        </div>
+    </div>
+
+    <div class="bottom-action">
+        <button class="edit-btn">
+            <span class="material-icons-outlined">edit</span>
+            Suggest an edit
+        </button>
+    </div>
+</div>
+
+<script>
+    // Simple script to handle tab switching
+    function switchTab(clickedElement) {
+        // Remove active class from all tabs
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        clickedElement.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
