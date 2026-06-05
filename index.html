@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lidiya Cafe & Fast Food</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Variables for consistent theming */
         :root {
@@ -13,6 +13,7 @@
             --text-color: #374151;
             --bg-color: #f9fafb;
             --white: #ffffff;
+            --star-color: #fbbc04; /* Google Maps yellow star color */
             --transition: all 0.3s ease;
         }
 
@@ -188,6 +189,79 @@
             font-size: 0.9rem;
         }
 
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .avatar.blue { background-color: #1a73e8; }
+        .avatar.green { background-color: #1e8e3e; }
+        .avatar.purple { background-color: #9333ea; }
+        .avatar.orange { background-color: #d97706; }
+
+        .reviewer-info h4 {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+
+        .reviewer-info span {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .stars {
+            color: var(--star-color);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-style: italic;
+            flex-grow: 1;
+        }
+
         /* About/Contact Section */
         .info-grid {
             display: grid;
@@ -261,12 +335,14 @@
 </head>
 <body>
 
+    <!-- Header & Navigation -->
     <header>
         <nav>
             <a href="#" class="logo">Lidiya <span>Cafe</span></a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#menu">Menu</a></li>
+                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -274,6 +350,7 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Fresh Coffee & Great Food</h1>
@@ -282,11 +359,12 @@
         </div>
     </section>
 
+    <!-- Menu Section -->
     <section id="menu">
         <h2 class="section-title">Our <span>Menu</span></h2>
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1550117006-cd3a17e47a95?auto=format&fit=crop&w=600&q=80" alt="Specialty Coffee" class="menu-img">
+                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=600&q=80" alt="Specialty Coffee" class="menu-img">
                 <div class="menu-content">
                     <h3>Macchiato & Espresso</h3>
                     <p>Rich, locally sourced Ethiopian beans expertly crafted by our baristas.</p>
@@ -309,6 +387,93 @@
         </div>
     </section>
 
+    <!-- Customer Reviews Section -->
+    <section id="reviews" style="background-color: var(--white); padding-bottom: 5rem; border-radius: 20px; margin-top: 2rem;">
+        <h2 class="section-title" style="padding-top: 3rem;">Customer <span>Reviews</span></h2>
+        <div class="reviews-grid">
+            
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar green">R</div>
+                    <div class="reviewer-info">
+                        <h4>Ruth</h4>
+                        <span>a year ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"I ordered a delicious cake and vanilla pastries from Lidiya’s Cafe. Tasted so fresh and the staff are so friendly. I highly recommend visiting if you are ever near Kebena. I will be back on my next visit to Ethiopia."</p>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar blue">D</div>
+                    <div class="reviewer-info">
+                        <h4>Danny Mia</h4>
+                        <span>11 months ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Test the difference with An excellent service"</p>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar green">H</div>
+                    <div class="reviewer-info">
+                        <h4>Hayat Jemal</h4>
+                        <span>3 years ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★☆</div>
+                <p class="review-text">"Their food is so good i loved it so much and you should try their special burger"</p>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar purple">R</div>
+                    <div class="reviewer-info">
+                        <h4>Rezan Hasan</h4>
+                        <span>3 years ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Great food, good service!"</p>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar orange">S</div>
+                    <div class="reviewer-info">
+                        <h4>S A</h4>
+                        <span>4 years ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Amazing service. Love it"</p>
+            </div>
+
+             <!-- Review 6 -->
+             <div class="review-card">
+                <div class="reviewer-header">
+                    <div class="avatar blue">D</div>
+                    <div class="reviewer-info">
+                        <h4>D Raff</h4>
+                        <span>8 months ago</span>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"Food: 5/5 | Service: 5/5"</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Information / Contact Section -->
     <section id="about">
         <h2 class="section-title">Visit <span>Us</span></h2>
         <div class="info-grid">
@@ -342,10 +507,12 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Lidiya Cafe & Fast Food. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Mobile Menu & Smooth Scrolling -->
     <script>
         // Mobile Menu Toggle
         const mobileBtn = document.querySelector('.mobile-menu-btn');
