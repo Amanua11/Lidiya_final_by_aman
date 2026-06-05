@@ -315,14 +315,16 @@
             color: #8e9bb0;
         }
 
-        .footer-credit span {
+        /* Updated to target the anchor tag */
+        .footer-credit a {
             color: #00a8e8;
             font-weight: 500;
             cursor: pointer;
+            text-decoration: none;
             transition: color 0.3s;
         }
 
-        .footer-credit span:hover {
+        .footer-credit a:hover {
             color: #38bdf8;
             text-decoration: underline;
         }
@@ -363,7 +365,6 @@
 </head>
 <body>
 
-    <!-- Header & Navigation -->
     <header>
         <nav>
             <a href="#home" class="logo">
@@ -386,7 +387,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Fresh Coffee & Great Food</h1>
@@ -395,7 +395,6 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
     <section id="menu">
         <h2 class="section-title">Our <span>Menu</span></h2>
         <div class="menu-grid">
@@ -423,7 +422,6 @@
         </div>
     </section>
 
-    <!-- Information / Contact Section -->
     <section id="about">
         <h2 class="section-title">Visit <span>Us</span></h2>
         <div class="info-grid">
@@ -452,18 +450,15 @@
                     <li><strong>Saturday:</strong> 7:00 AM - 8:30 PM</li>
                     <li><strong>Sunday:</strong> 8:00 AM - 8:00 PM</li>
                 </ul>
-                <!-- Added ID here for JavaScript to target -->
                 <p id="store-status" style="margin-top: 1rem; font-weight: 600;"></p>
             </div>
         </div>
     </section>
 
-    <!-- Customer Reviews Section -->
     <section id="reviews" style="background-color: var(--white); padding-bottom: 5rem; border-radius: 20px; margin-top: 2rem; margin-bottom: 2rem;">
         <h2 class="section-title" style="padding-top: 3rem;">Customer <span>Reviews</span></h2>
         <div class="reviews-grid">
             
-            <!-- Review 1 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar green">R</div>
@@ -476,7 +471,6 @@
                 <p class="review-text">"I ordered a delicious cake and vanilla pastries from Lidiya’s Cafe. Tasted so fresh and the staff are so friendly. I highly recommend visiting if you are ever near Kebena. I will be back on my next visit to Ethiopia."</p>
             </div>
 
-            <!-- Review 2 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar blue">D</div>
@@ -489,7 +483,6 @@
                 <p class="review-text">"Test the difference with An excellent service"</p>
             </div>
 
-            <!-- Review 3 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar green">H</div>
@@ -502,7 +495,6 @@
                 <p class="review-text">"Their food is so good i loved it so much and you should try their special burger"</p>
             </div>
 
-            <!-- Review 4 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar purple">R</div>
@@ -515,7 +507,6 @@
                 <p class="review-text">"Great food, good service!"</p>
             </div>
 
-            <!-- Review 5 -->
             <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar orange">S</div>
@@ -528,7 +519,6 @@
                 <p class="review-text">"Amazing service. Love it"</p>
             </div>
 
-             <!-- Review 6 -->
              <div class="review-card">
                 <div class="reviewer-header">
                     <div class="avatar blue">D</div>
@@ -544,13 +534,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Lidiya Cafe & Fast Food. All Rights Reserved.</p>
-        <p class="footer-credit">Website designed & developed by <span>SpiderWeb</span></p>
+        <p class="footer-credit">Website designed & developed by <a href="https://spiderweb.lol/" target="_blank">SpiderWeb</a></p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu, Smooth Scrolling & Dynamic Hours -->
     <script>
         // --- Navigation Logic ---
         const mobileBtn = document.querySelector('.mobile-menu-btn');
